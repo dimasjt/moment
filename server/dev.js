@@ -17,20 +17,21 @@ const PORT = process.env.PORT || 3000
 fs.existsSync(logDir) || fs.mkdirSync(logDir)
 
 const app = express()
-const wp = webpack(webpackConfig)
-
-app.use(morgan('combined', { stream: accessLogStream }))
-app.use(responseTime())
-app.use(webpackDevMiddleware(wp, {
+const compiler = webpack(webpackConfig)
+const middleware = webpackDevMiddleware(compiler, {
   publicPath: '/assets',
-  index: path.resolve(__dirname, '../app/views/index.html'),
   stats: {
     color: true,
   },
-}))
+})
 
-app.get('/', (req, res) => {
-  res.send('Hello World')
+app.use(morgan('combined', { stream: accessLogStream }))
+app.use(responseTime())
+app.use(middleware)
+
+app.get('*', (req, res) => {
+  res.write(middleware.fileSystem.readFileSync(path.resolve(__dirname, 'assets/index.html')))
+  res.end()
 })
 
 app.listen(PORT, () => {
