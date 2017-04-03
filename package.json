@@ -1,0 +1,32 @@
+{
+  "name": "boilerplate-express-webpack-react",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:dimasjt/boilerplate-express-webpack-react.git",
+  "author": "Dimas J. Taniawan <dimazniawan@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "eslint": "./node_modules/.bin/eslint ."
+  },
+  "dependencies": {
+    "express": "5.0.0-alpha.5",
+    "nodemon": "^1.11.0",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "react-redux": "^5.0.3",
+    "react-router": "^4.0.0",
+    "webpack": "^2.3.2"
+  },
+  "devDependencies": {
+    "babel-core": "^6.24.0",
+    "babel-eslint": "^7.2.1",
+    "babel-preset-env": "^1.3.2",
+    "babel-preset-latest": "^6.24.0",
+    "babel-preset-react": "^6.23.0",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-react": "^6.10.3"
+  }
+}
