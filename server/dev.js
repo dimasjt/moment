@@ -5,7 +5,7 @@ import fs from 'fs'
 import path from 'path'
 
 const logFile = path.resolve(__dirname, '../log/dev.log')
-const logDir = path.join(__dirname, 'log')
+const logDir = path.resolve(__dirname, '../log')
 const accessLogStream = fs.createWriteStream(logFile, { flags: 'a' })
 
 fs.existsSync(logDir) || fs.mkdirSync(logDir)
