@@ -9,9 +9,5 @@
     "react",
     "jsx-a11y",
     "import"
-  ],
-  "rules": {
-    "no-console": 0,
-    "semi": 0
-  }
+  ]
 }
