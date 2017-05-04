@@ -8,6 +8,12 @@ import {
 
 const router = Router();
 
+
+validate.options({
+  allowUnknownBody: false,
+  allowUnknownParams: false,
+});
+
 router.get('/', async (req, res) => {
   res.send('API');
 });
