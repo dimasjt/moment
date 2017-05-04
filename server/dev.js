@@ -4,11 +4,13 @@ import responseTime from 'response-time';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpack from 'webpack';
 import bodyParser from 'body-parser';
+import cookieParser from 'cookie-parser';
 
 import fs from 'fs';
 import path from 'path';
 
 import webpackConfig from './webpack/dev';
+import database from './config/database';
 import api from './api';
 
 const logFile = path.resolve(__dirname, '../log/dev.log');
@@ -17,6 +19,8 @@ const accessLogStream = fs.createWriteStream(logFile, { flags: 'a' });
 const PORT = process.env.PORT || 3000;
 
 fs.existsSync(logDir) || fs.mkdirSync(logDir);
+
+database();
 
 const app = express();
 const compiler = webpack(webpackConfig);
@@ -29,6 +33,7 @@ const middleware = webpackDevMiddleware(compiler, {
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(cookieParser());
 app.use(morgan('combined', { stream: accessLogStream }));
 app.use(responseTime());
 app.use(middleware);
